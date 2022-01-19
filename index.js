@@ -100,8 +100,24 @@ Car.prototype.fill= function(gallons) {
   return this.tank= this.tank + gallons
 }
 Car.prototype.drive= function(distance){
-  return this.odometer= this.odometer + distance;
+  const maxDistance= this.milesPerGallon * this.tank;
+  if(maxDistance> distance) {
+    this.tank=0;
+    this.odometer= this.odometer + maxDistance;
+    return`I ran out of fuel at ${this.odometer} miles!`
+  } else{
+    this.odometer= this.odometer+ distance;
+    this.tank= this.tank-(distance/this.milesPerGallon)
+  }
 }
+ const babooshka = new Car('Fusion', 32)
+ console.log(babooshka)
+ babooshka.fill(5);
+ console.log(babooshka)
+babooshka.drive(100);
+console.log(babooshka);
+
+
 
 /*
   TASK 3
@@ -120,15 +136,15 @@ Baby.prototype.play=function(){
 }
 const reginald= new Baby('Reginald', 3, 'Buzz Lightyear');
 
-console.log(reginald)
+// console.log(reginald)
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. global- 'this' refers to the whole window: a massive amount of information that is unusable.
+  2. implicit- 'this' initially has no concrete meaning. It is a variable without a home until a method is called. A method will use a period when it is called, and the object to the left of that period becomes the home/owner of 'this'.
+  3. new binding- 'this' belongs to a constructor function, and is assigned to a variable through the use of a 'new' keyword 
+  4. explicit- 'this' is spelled out by predetermined code. When we use that code we leave no doubt about what 'this' can be referring to.
 */
 
 
