@@ -115,12 +115,12 @@ function Baby(name, age, favoriteToy) {
  this.favoriteToy= favoriteToy;
 }
 Baby.prototype= Object.create(Person.prototype);
-Baby.prototype.play=function(toy){
-  return `Playing with ${toy}`
+Baby.prototype.play=function(){
+  return `Playing with ${this.favoriteToy}`
 }
 const reginald= new Baby('Reginald', 3, 'Buzz Lightyear');
 
-console
+console.log(reginald)
 
 /* 
   TASK 4
